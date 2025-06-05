@@ -27,7 +27,7 @@ public class Sistem_Klinik {
             switch (pilihan) {
                 case 1 -> {
                     antrian.tambahAntrian(inputPasien());
-                    System.out.println(">> Pasien masuk ke dalam antrian");
+                    System.out.println("\n>> Pasien masuk ke dalam antrian");
                 }
                 case 2 -> {
                     System.out.println(">> Daftar Antrian Pasien\n");
@@ -57,23 +57,28 @@ public class Sistem_Klinik {
                     
                     TransaksiLayanan t = new TransaksiLayanan(p, d, durasi);
                     riwayat.tambahRiwayat(t);
-                    System.out.println(">> Pasien telah dilayani dan transaksi dicatat");
+                    System.out.println("\n>> Pasien telah dilayani dan transaksi dicatat");
                 }
                 case 4 -> {
                     int sisa = antrian.hitungSisaAntrian();
                     System.out.println(">> Sisa pasien dalam antrian: " + sisa);
                 }
                 case 5 -> {
-                    System.out.println(">> Riwayat Transaksi Layanan: ");
+                    System.out.println(">> Riwayat Transaksi Layanan: \n");
                     riwayat.tampilkanRiwayat();
                 }
                 case 6 -> {
+                    if(riwayat.isEmpty()) {
+                        System.out.println("Riwayat transaksi kosong");
+                        break;
+                    }
                     TransaksiLayanan t = riwayat.hapusRiwayat();
-                    System.out.println(">> Data yang terhapus adalah: ");
-                    System.out.println("Pasien: " + t.pasien.nama);
-                    System.out.println("Dokter: " + t.dokter.nama + " (ID: " + t.dokter.idDokter + ")");
-                    System.out.println("Durasi: " + t.durasiLayanan + " jam");
-                    System.out.println("Biaya: Rp " + t.hitungBiaya());
+                    System.out.println(">> Data yang terhapus adalah: \n");
+                    System.out.println("Pasien      : " + t.pasien.nama);
+                    System.out.println("Dokter      : " + t.dokter.nama);
+                    System.out.println("ID Dokter   : " + t.dokter.idDokter);
+                    System.out.println("Durasi      : " + t.durasiLayanan + " jam");
+                    System.out.println("Biaya       : Rp " + t.hitungBiaya());
 
                 }
 
@@ -86,19 +91,19 @@ public class Sistem_Klinik {
     }
 
     static Pasien inputPasien() {
-        System.out.print("Nama Pasien: ");
+        System.out.print("Nama Pasien   : ");
         String nama = sc.nextLine();
-        System.out.print("NIK: ");
+        System.out.print("NIK           : ");
         String nik = sc.nextLine();
-        System.out.print("Keluhan: ");
+        System.out.print("Keluhan       : ");
         String keluhan = sc.nextLine();
         return new Pasien(nama, nik, keluhan);
     }
 
     static Dokter inputDokter() {
-        System.out.print("ID Dokter: ");
+        System.out.print("ID Dokter     : ");
         String id = sc.nextLine();
-        System.out.print("Nama Dokter: ");
+        System.out.print("Nama Dokter   : ");
         String namaDok = sc.nextLine();
         return new Dokter(id, namaDok);
     }

@@ -33,10 +33,6 @@ public class QueueTransaksi {
     }
 
     public TransaksiLayanan hapusRiwayat() {
-        if(isEmpty()) {
-            System.out.println(">> Riwayat transaksi kosong");
-            return null;
-        }
         TransaksiLayanan t = data[front];
         front = (front + 1) % max;
         size--;
@@ -52,10 +48,11 @@ public class QueueTransaksi {
         int index = front;
         for (int i = 0; i < size; i++) {
             TransaksiLayanan t = data[index];
-            System.out.println("Pasien: " + t.pasien.nama);
-            System.out.println("Dokter: " + t.dokter.nama + " (ID: " + t.dokter.idDokter + ")");
-            System.out.println("Durasi: " + t.durasiLayanan + " jam");
-            System.out.println("Biaya: Rp " + t.hitungBiaya());
+            System.out.println("Pasien      : " + t.pasien.nama);
+            System.out.println("Dokter      : " + t.dokter.nama);
+            System.out.println("ID Dokter   : " + t.dokter.idDokter);
+            System.out.println("Durasi      : " + t.durasiLayanan + " jam");
+            System.out.println("Biaya       : Rp " + t.hitungBiaya());
             System.out.println("--------------------------");
             index = (index + 1) % max;
         }

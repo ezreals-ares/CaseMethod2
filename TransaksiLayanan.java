@@ -1,4 +1,4 @@
-package Praktikum_ASD.CM2;
+package CaseMethod2;
 
 public class TransaksiLayanan {
 
@@ -16,9 +16,5 @@ public class TransaksiLayanan {
 
     public int hitungBiaya()  {
         return durasiLayanan * 50000;
-    }
-
-    public void tampilkanTransaksi() {
-        System.out.println("Pasien: " + pasien.nama + ", Dokter: " + dokter.nama + ", Durasi: " + durasiLayanan + " jam, Biaya: Rp" + biaya);
     }
 }
