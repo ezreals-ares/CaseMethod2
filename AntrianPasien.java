@@ -1,4 +1,4 @@
-package Praktikum_ASD.CM2;
+package CaseMethod2;
 
 public class AntrianPasien {
 

@@ -1,4 +1,4 @@
-package Praktikum_ASD.CM2;
+package CaseMethod2;
 import java.util.Scanner;
 public class Sistem_Klinik {
 
@@ -56,7 +56,7 @@ public class Sistem_Klinik {
                     }
                     
                     TransaksiLayanan t = new TransaksiLayanan(p, d, durasi);
-                    riwayat.enqueue(t);
+                    riwayat.tambahRiwayat(t);
                     System.out.println(">> Pasien telah dilayani dan transaksi dicatat");
                 }
                 case 4 -> {
@@ -68,7 +68,7 @@ public class Sistem_Klinik {
                     riwayat.tampilkanRiwayat();
                 }
                 case 6 -> {
-                    TransaksiLayanan t = riwayat.dequeue();
+                    TransaksiLayanan t = riwayat.hapusRiwayat();
                     System.out.println(">> Data yang terhapus adalah: ");
                     System.out.println("Pasien: " + t.pasien.nama);
                     System.out.println("Dokter: " + t.dokter.nama + " (ID: " + t.dokter.idDokter + ")");

@@ -1,4 +1,4 @@
-package Praktikum_ASD.CM2;
+package CaseMethod2;
 
 public class QueueTransaksi {
 
@@ -22,7 +22,7 @@ public class QueueTransaksi {
         return size == max;
     }
 
-    public void enqueue(TransaksiLayanan t) {
+    public void tambahRiwayat(TransaksiLayanan t) {
         if(isFull()) {
             System.out.println(">> Riwayat transaksi penuh");
             return;
@@ -32,7 +32,7 @@ public class QueueTransaksi {
         size++;     
     }
 
-    public TransaksiLayanan dequeue() {
+    public TransaksiLayanan hapusRiwayat() {
         if(isEmpty()) {
             System.out.println(">> Riwayat transaksi kosong");
             return null;
