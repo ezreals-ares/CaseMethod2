@@ -12,8 +12,8 @@ public class Pasien {
     void tampilInformasi() {
         System.out.println("Nama Pasien : " + nama);
         System.out.println("NIK         : " + nik);
-        System.out.println("Keluhan     : " + keluhan);
-        System.out.println();
+        System.out.println("Keluhan     : \n" + keluhan);
+    
       
     }
     

@@ -1,6 +1,6 @@
 package CaseMethod2;
 import java.util.Scanner;
-public class Sistem_Klinik {
+public class Sistem_Antrian_Klinik {
 
     static Scanner sc = new Scanner(System.in);
 
@@ -61,7 +61,11 @@ public class Sistem_Klinik {
                 }
                 case 4 -> {
                     int sisa = antrian.hitungSisaAntrian();
-                    System.out.println(">> Sisa pasien dalam antrian: " + sisa);
+                    if (sisa == 0) {
+                        System.out.println(">> Tidak ada pasien dalam antrian");
+                    } else {
+                        System.out.println(">> Sisa pasien dalam antrian: " + sisa);
+                    }
                 }
                 case 5 -> {
                     System.out.println(">> Riwayat Transaksi Layanan: \n");
