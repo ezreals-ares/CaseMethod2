@@ -2,9 +2,8 @@ package CaseMethod2;
 import java.util.Scanner;
 public class Sistem_Antrian_Klinik {
 
-    static Scanner sc = new Scanner(System.in);
-
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         AntrianPasien antrian = new AntrianPasien();
         QueueTransaksi riwayat = new QueueTransaksi(100);
         int pilihan;
@@ -26,22 +25,23 @@ public class Sistem_Antrian_Klinik {
 
             switch (pilihan) {
                 case 1 -> {
-                    antrian.tambahAntrian(inputPasien());
+                    Pasien p = InputEntity.inputPasien();
+                    antrian.tambahAntrian(p);
                     System.out.println("\n>> Pasien masuk ke dalam antrian");
                 }
                 case 2 -> {
-                    System.out.println(">> Daftar Antrian Pasien\n");
+                    System.out.println(">> Daftar Antrian Pasien:\n");
                     antrian.tampilkanAntrian();
                 }
                 case 3 -> {
                     if (antrian.isEmpty()) {
-                        System.out.println("Antrian kosong");
+                        System.out.println(">> Antrian Kosong");
                         break;
                     }
                     Pasien p = antrian.layaniPasien();
-                    System.out.println("Pasien " + p.nama + " dipanggil");
+                    System.out.println("Pasien " + p.nama + " Dipanggil");
 
-                    Dokter d = inputDokter();
+                    Dokter d = InputEntity.inputDokter();
                     int durasi;
 
                     while(true) {  
@@ -71,44 +71,14 @@ public class Sistem_Antrian_Klinik {
                     System.out.println(">> Riwayat Transaksi Layanan: \n");
                     riwayat.tampilkanRiwayat();
                 }
-                case 6 -> {
-                    if(riwayat.isEmpty()) {
-                        System.out.println("Riwayat transaksi kosong");
-                        break;
-                    }
-                    TransaksiLayanan t = riwayat.hapusRiwayat();
-                    System.out.println(">> Data yang terhapus adalah: \n");
-                    System.out.println("Pasien      : " + t.pasien.nama);
-                    System.out.println("Dokter      : " + t.dokter.nama);
-                    System.out.println("ID Dokter   : " + t.dokter.idDokter);
-                    System.out.println("Durasi      : " + t.durasiLayanan + " jam");
-                    System.out.println("Biaya       : Rp " + t.hitungBiaya());
 
-                }
-
+                case 6 -> riwayat.hapusRiwayat();
                 case 7 -> riwayat.hapusSeluruhRiwayat();
                 case 0 -> System.out.println("Keluar dari sistem");
                 default -> System.out.println("Pilihan tidak valid");
             }
             
         } while (pilihan != 0);
-    }
-
-    static Pasien inputPasien() {
-        System.out.print("Nama Pasien   : ");
-        String nama = sc.nextLine();
-        System.out.print("NIK           : ");
-        String nik = sc.nextLine();
-        System.out.print("Keluhan       : ");
-        String keluhan = sc.nextLine();
-        return new Pasien(nama, nik, keluhan);
-    }
-
-    static Dokter inputDokter() {
-        System.out.print("ID Dokter     : ");
-        String id = sc.nextLine();
-        System.out.print("Nama Dokter   : ");
-        String namaDok = sc.nextLine();
-        return new Dokter(id, namaDok);
+        sc.close();
     }
 }

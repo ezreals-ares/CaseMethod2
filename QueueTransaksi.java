@@ -9,8 +9,7 @@ public class QueueTransaksi {
     public QueueTransaksi(int max) {
         this.max = max;
         data = new TransaksiLayanan[max];
-        front = 0;
-        rear = -1;
+        front = rear = -1;
         size = 0;
     }
 
@@ -27,21 +26,38 @@ public class QueueTransaksi {
             System.out.println(">> Riwayat transaksi penuh");
             return;
         }
-        rear = (rear + 1) % max;
+
+        if (isEmpty()) {
+            front = rear = 0;
+        } else {
+            rear = (rear + 1) % max;
+        }
+
         data[rear] = t;
         size++;     
     }
 
-    public TransaksiLayanan hapusRiwayat() {
+    public void hapusRiwayat() {
+        if(isEmpty()) {
+            System.out.println(">> Riwayat Transaksi Kosong");
+            return;
+        }
+
         TransaksiLayanan t = data[front];
-        front = (front + 1) % max;
         size--;
-        return t;
+        front = (front + 1) % max;
+
+        System.out.println(">> Data yang terhapus adalah: \n");
+        System.out.println("Pasien      : " + t.pasien.nama);
+        System.out.println("Dokter      : " + t.dokter.nama);
+        System.out.println("ID Dokter   : " + t.dokter.idDokter);
+        System.out.println("Durasi      : " + t.durasiLayanan + " jam");
+        System.out.println("Biaya       : Rp " + t.hitungBiaya());
     }
 
     public void tampilkanRiwayat() {
         if(isEmpty()) {
-            System.out.println(">> Belum ada transaksi");
+            System.out.println("Tidak Ada Transaksi");
             return;
         }
 
@@ -60,11 +76,11 @@ public class QueueTransaksi {
 
     public void hapusSeluruhRiwayat() {
         if(isEmpty()) {
-            System.out.println("Data masih kosong");
+            System.out.println(">> Riwayat Transaksi Kosong");
             return;
         }
 
-        for (int i = 0; i < max; i++) {
+        for (int i = 0; i < size; i++) {
             data[i] = null;
         }
         size = 0;
