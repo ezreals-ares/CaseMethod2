@@ -83,12 +83,10 @@ public class QueueTransaksi {
         for (int i = 0; i < size; i++) {
             data[i] = null;
         }
+        
+        front = rear = -1;
         size = 0;
 
         System.out.println(">> Riwayat Berhasil Dikosongkan");
-
-        
     }
-
-
 }

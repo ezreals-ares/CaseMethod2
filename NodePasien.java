@@ -9,6 +9,5 @@ public class NodePasien {
         this.data = data;
         this.next = null;
         this.prev = null;
-
     }
 }

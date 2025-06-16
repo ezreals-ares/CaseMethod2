@@ -31,18 +31,19 @@ public class AntrianPasien {
         return p;
     }
     
-    public void tampilkanAntrian() {
-        if (isEmpty()) {
-            System.out.println("Antrian Kosong");
-            return;
-        } 
+        public void tampilkanAntrian() {
+            if (isEmpty()) {
+                System.out.println("Antrian Kosong");
+                return;
+            } 
 
-        NodePasien current = head;
-        while(current != null) {
-            current.data.tampilInformasi();
-            current = current.next;
+            NodePasien current = head;
+            while(current != null) {
+                current.data.tampilInformasi();
+                current = current.next;
+            }
         }
-    }
+
 
     public int hitungSisaAntrian() {
         int count = 0;

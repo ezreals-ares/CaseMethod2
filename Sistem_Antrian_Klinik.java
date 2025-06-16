@@ -24,8 +24,8 @@ public class Sistem_Antrian_Klinik {
             System.out.println();
 
             switch (pilihan) {
-                case 1 -> {
-                    Pasien p = InputEntity.inputPasien();
+                case 1 -> { 
+                    Pasien p = EntityInput.inputPasien();
                     antrian.tambahAntrian(p);
                     System.out.println("\n>> Pasien masuk ke dalam antrian");
                 }
@@ -41,7 +41,7 @@ public class Sistem_Antrian_Klinik {
                     Pasien p = antrian.layaniPasien();
                     System.out.println("Pasien " + p.nama + " Dipanggil");
 
-                    Dokter d = InputEntity.inputDokter();
+                    Dokter d = EntityInput.inputDokter();
                     int durasi;
 
                     while(true) {  
@@ -57,7 +57,7 @@ public class Sistem_Antrian_Klinik {
                     
                     TransaksiLayanan t = new TransaksiLayanan(p, d, durasi);
                     riwayat.tambahRiwayat(t);
-                    System.out.println("\n>> Pasien telah dilayani dan transaksi dicatat");
+                    System.out.println(" \n>> Pasien telah dilayani dan transaksi dicatat");
                 }
                 case 4 -> {
                     int sisa = antrian.hitungSisaAntrian();

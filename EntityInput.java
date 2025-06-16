@@ -2,7 +2,7 @@ package CaseMethod2;
 
 import java.util.Scanner;
 
-public class InputEntity {
+public class EntityInput {
     static Scanner sc = new Scanner(System.in);
 
     public static Pasien inputPasien() {
